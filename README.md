@@ -3,3 +3,5 @@ This Github repo simply holds the code of my YouTube series which shows how to c
 
 #### 1. Setup the project and create layouts
 #### 2. Product Index View
+#### 3. Data Migrations & Seeding
+#### 4. Outputting Product Data
