@@ -4,15 +4,15 @@
 @endsection
 @section('content')
     <div class="row">
-        @foreach ($products->chunk(3) as $productChunk)
-            <div class="row">
-                @foreach ($productChunk as $product)
+
+        <div class="row">
+            @foreach ($products as $product)
                 <div class="col-6 col-sm-6 col-md-4 mb-3">
                     <div class="card">
                         <img class="card-img-top img-fluid" src="{{ $product->imagePath }}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->title }}</h5>
-                            <p class="card-text">{{ Str::limit($product->description,50) }}</p>
+                            <h5 class="card-title">{{ Str::limit($product->title, 20) }}</h5>
+                            <p class="card-text">{{ Str::limit($product->description, 50) }}</p>
                             <div class="clearfix">
                                 <div class="float-left price">$ {{ $product->price }}</div>
                                 <a href="#" class="btn btn-success float-right">Add to Cart</a>
@@ -20,9 +20,6 @@
                         </div>
                     </div>
                 </div>
-                 @endforeach
-            </div>
-        @endforeach
-
-
+            @endforeach
+        </div>
     @endsection

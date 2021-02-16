@@ -5,3 +5,4 @@ This Github repo simply holds the code of my YouTube series which shows how to c
 #### 2. Product Index View
 #### 3. Data Migrations & Seeding
 #### 4. Outputting Product Data
+#### 5. User Auth Pages and Redirects
