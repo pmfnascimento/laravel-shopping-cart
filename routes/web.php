@@ -18,6 +18,8 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [ProductController::class, 'index']);
 
+Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -15,7 +15,7 @@
                             <p class="card-text">{{ Str::limit($product->description, 50) }}</p>
                             <div class="clearfix">
                                 <div class="float-left price">$ {{ $product->price }}</div>
-                                <a href="#" class="btn btn-success float-right">Add to Cart</a>
+                                <a href="{{ route('add-to-cart',['id' => $product->id]) }}" class="btn btn-success float-right">Add to Cart</a>
                             </div>
                         </div>
                     </div>
