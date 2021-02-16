@@ -4,70 +4,25 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-6 col-sm-6 col-md-3">
-            <div class="card m-1">
-                <img class="card-img-top img-fluid"
-                    src="https://canalhollywood.pt/wp-content/uploads/posters/images/hollywoodpt/poster/183362.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus vitae illum
-                        molestiae, unde</p>
-                    <div class="clearfix">
-                        <div class="float-left price">$12</div>
-                        <a href="#" class="btn btn-success float-right">Add to Cart</a>
+        @foreach ($products->chunk(3) as $productChunk)
+            <div class="row">
+                @foreach ($productChunk as $product)
+                <div class="col-6 col-sm-6 col-md-4 mb-3">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="{{ $product->imagePath }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->title }}</h5>
+                            <p class="card-text">{{ Str::limit($product->description,50) }}</p>
+                            <div class="clearfix">
+                                <div class="float-left price">$ {{ $product->price }}</div>
+                                <a href="#" class="btn btn-success float-right">Add to Cart</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                 @endforeach
             </div>
-        </div>
-        <div class="col-6 col-sm-6 col-md-3">
-            <div class="card m-1">
-                <img class="card-img-top img-fluid"
-                    src="https://canalhollywood.pt/wp-content/uploads/posters/images/hollywoodpt/poster/183362.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus vitae illum
-                        molestiae, unde</p>
-                    <div class="clearfix">
-                        <div class="float-left price">$12</div>
-                        <a href="#" class="btn btn-success float-right">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-sm-6 col-md-3">
-            <div class="card m-1">
-                <img class="card-img-top img-fluid"
-                    src="https://canalhollywood.pt/wp-content/uploads/posters/images/hollywoodpt/poster/183362.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus vitae illum
-                        molestiae, unde</p>
-                    <div class="clearfix">
-                        <div class="float-left price">$12</div>
-                        <a href="#" class="btn btn-success float-right">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-sm-6 col-md-3">
-            <div class="card m-1">
-                <img class="card-img-top img-fluid"
-                    src="https://canalhollywood.pt/wp-content/uploads/posters/images/hollywoodpt/poster/183362.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus vitae illum
-                        molestiae, unde</p>
-                    <div class="clearfix">
-                        <div class="float-left price">$12</div>
-                        <a href="#" class="btn btn-success float-right">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        @endforeach
 
-@endsection
+
+    @endsection
