@@ -5,11 +5,15 @@
 @section('content')
     <div class="row">
         <div class="col-8 mx-auto">
+            
             <div class="card">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Checkout</strong></li>
                     <li class="list-group-item"><strong>Total: {{ $totalPrice }} $</strong></li>
                     <li class="list-group-item">
+                        <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'hidden': ''}}">
+                        {{ Session::get('error') }}
+                        </div>
                         <form method="POST" action="{{ route('checkout') }}">
                             @csrf
                             <div class="form-group">
@@ -55,4 +59,8 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset('js/checkout.js') }}"></script>
 @endsection
