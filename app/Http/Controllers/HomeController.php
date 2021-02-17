@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,7 +34,11 @@ class HomeController extends Controller
      */
     public function profile()
     {
-    
-        return view('user.profile');
+        $orders = Auth::user()->orders;
+        $orders->transform(function ($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('user.profile', ['orders' => $orders]);
     }
 }
