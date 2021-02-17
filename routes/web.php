@@ -16,9 +16,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('shop.index');
 
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
+
+Route::get('/shopping-cart', [ProductController::class, 'getCart'])->name('shopping-cart');
 
 Auth::routes();
 

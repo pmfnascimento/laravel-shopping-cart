@@ -41,11 +41,13 @@ class Cart extends Model
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {
                 $storeItem = $this->items[$id];
+                $this->totalQty = $this->totalQty;
             }
         }
         $storeItem['qty']++;
         $storeItem['price'] = $item->price * $storeItem['qty'];
         $this->items[$id] = $storeItem;
+        $this->totalQty += 1;
         $this->totalPrice += $item->price;
     }
 }

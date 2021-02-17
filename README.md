@@ -8,3 +8,4 @@ This Github repo simply holds the code of my YouTube series which shows how to c
 #### 5. User Auth Pages and Redirects
 #### 6. Middleware & Route Protection
 #### 7. Cart Model & Session Storage
+#### 8. Cart Views

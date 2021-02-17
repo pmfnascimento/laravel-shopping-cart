@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+                    <a class="nav-link" href="{{ route('shopping-cart') }}"><i class="fas fa-shopping-cart"></i> Shopping Cart <span class="badge badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
                 </li>
                       @guest
                             <li class="nav-item">
