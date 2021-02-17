@@ -15,3 +15,4 @@ This Github repo simply holds the code of my YouTube series which shows how to c
 #### 12. Storing Orders in the Database
 #### 13. Forcing User Login
 #### 14. Displaying Orders in the User Profile
+#### 15. Finishing Touches (Reupload)

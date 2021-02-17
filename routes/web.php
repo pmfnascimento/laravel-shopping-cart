@@ -25,6 +25,9 @@ Route::post('/checkout', [ProductController::class, 'submitCheckout'])->name('su
 
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
 
+Route::get('/reduce/{id}', [ProductController::class, 'getReduceByOne'])->name('reduce')->middleware('auth');
+Route::get('/remove/{id}', [ProductController::class, 'removeItem'])->name('remove')->middleware('auth');
+
 Route::get('/shopping-cart', [ProductController::class, 'getCart'])->name('shopping-cart');
 
 Auth::routes();

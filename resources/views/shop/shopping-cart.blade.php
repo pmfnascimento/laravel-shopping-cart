@@ -31,8 +31,8 @@
                                             Action
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Reduce by 1</a>
-                                            <a class="dropdown-item" href="#">Reduce All</a>
+                                            <a class="dropdown-item" href="{{ route('reduce',['id' => $product['item']['id']]) }}">Reduce by 1</a>
+                                            <a class="dropdown-item" href="{{ route('remove',['id' => $product['item']['id']]) }}">Reduce All</a>
                                         </div>
                                     </div>
                                 </td>
@@ -47,7 +47,10 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Total: {{ $totalPrice }} $</strong></li>
-                        <li class="list-group-item"><a href="{{ route('checkout') }}" type="button" class="btn btn-success btn-block">Checkout</a></li>
+                        @if (!empty($products))
+                                                 <li class="list-group-item"><a href="{{ route('checkout') }}" type="button" class="btn btn-success btn-block">Checkout</a></li>   
+                        @endif
+
                     </ul>
                 </div>
             </div>

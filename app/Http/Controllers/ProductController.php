@@ -49,6 +49,34 @@ class ProductController extends Controller
         return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
+    public function getReduceByOne($id)
+    {
+        if (!Session::has('cart')) {
+            return view('shop.shopping-cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        Session::put('cart', $cart);
+        return redirect()->route('shopping-cart');
+    }
+
+    public function removeItem($id)
+    {
+        if (!Session::has('cart')) {
+            return view('shop.shopping-cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        return redirect()->route('shopping-cart');
+    }
+
     public function checkout()
     {
         if (!Session::has('cart')) {
