@@ -47,7 +47,7 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Total: {{ $totalPrice }} $</strong></li>
-                        <li class="list-group-item"><button type="button" class="btn btn-success btn-block">Checkout</button></li>
+                        <li class="list-group-item"><a href="{{ route('checkout') }}" type="button" class="btn btn-success btn-block">Checkout</a></li>
                     </ul>
                 </div>
             </div>
