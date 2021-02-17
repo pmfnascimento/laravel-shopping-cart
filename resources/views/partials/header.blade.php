@@ -10,7 +10,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="{{ route('shopping-cart') }}"><i class="fas fa-shopping-cart"></i> Shopping Cart <span class="badge badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+=======
+                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+>>>>>>> a5396dd8df771f8f884aea0b4a306973bc89fc7d
                 </li>
                       @guest
                             <li class="nav-item">
@@ -24,10 +28,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
                                     a class="dropdown-item" href="{{ route('profile') }}">
                                         User Profile
                                     </a>
 
+=======
+>>>>>>> a5396dd8df771f8f884aea0b4a306973bc89fc7d
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
