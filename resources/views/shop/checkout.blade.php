@@ -22,6 +22,20 @@
                             id="payment-form">
                             @csrf
 
+                             <div class='form-group'>
+                                <div class='required'>
+                                    <label class='control-label'>Name</label> <input class='form-control' size='4'
+                                        type='text' name="name" required>
+                                </div>
+                            </div>
+
+                             <div class='form-group'>
+                                <div class='required'>
+                                    <label class='control-label'>Address</label> <input class='form-control' size='4'
+                                        type='text' name="address" required>
+                                </div>
+                            </div>
+
                             <div class='form-group'>
                                 <div class='required'>
                                     <label class='control-label'>Name on Card</label> <input class='form-control' size='4'

@@ -25,7 +25,6 @@ class HomeController extends Controller
     {
         return view('user.signup');
     }
-<<<<<<< HEAD
 
     /**
      * Method User Profile : personal area user
@@ -36,6 +35,4 @@ class HomeController extends Controller
     {
         return view('user.profile');
     }
-=======
->>>>>>> a5396dd8df771f8f884aea0b4a306973bc89fc7d
 }

@@ -6,9 +6,11 @@ namespace App\Http\Controllers;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
 use App\Cart;
 
 class ProductController extends Controller
@@ -71,12 +73,20 @@ class ProductController extends Controller
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         try {
-            \Stripe\Charge::create([
+            $charge = \Stripe\Charge::create([
                 "amount" => $cart->totalPrice * 100,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "Making test payment."
             ]);
+
+            $order = new Order();
+            $order->cart = serialize($cart);
+            $order->address = $request->address;
+            $order->user_name = $request->name;
+            $order->payment_id = $charge->id;
+
+            Auth::user()->orders()->save($order);
 
             Session::forget('cart');
             return redirect()->route('shop.index')->with('success', 'Shopping sucessfully made!');
