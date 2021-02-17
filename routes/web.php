@@ -19,9 +19,9 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [ProductController::class, 'index'])->name('shop.index');
 
-Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout')->middleware('auth');
 
-Route::post('/checkout', [ProductController::class, 'submitCheckout'])->name('submit.checkout');
+Route::post('/checkout', [ProductController::class, 'submitCheckout'])->name('submit.checkout')->middleware('auth');
 
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
 
