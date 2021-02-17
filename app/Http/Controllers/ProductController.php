@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use Stripe\Stripe;
+use Stripe\Charge;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -56,9 +58,31 @@ class ProductController extends Controller
         return view('shop.checkout', ['totalPrice' => $total]);
     }
 
-    public function submitCheckout()
+    public function submitCheckout(Request $request)
     {
-    
+        if (!Session::has('cart')) {
+            return redirect()->route('shopping-cart');
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        try {
+            \Stripe\Charge::create([
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Making test payment."
+            ]);
+
+            Session::forget('cart');
+            return redirect()->route('shop.index')->with('success', 'Shopping sucessfully made!');
+        } catch (\Exception $e) {
+            return redirect()->route('checkout')->with('error', $e->getMessage());
+        }
     }
   
 }

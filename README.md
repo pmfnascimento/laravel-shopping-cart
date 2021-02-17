@@ -11,3 +11,4 @@ This Github repo simply holds the code of my YouTube series which shows how to c
 #### 8. Cart Views
 #### 9. Stripe Payments View
 #### 10. Stripe Credit Card Verification
+#### 11. Stripe Charging a Credit Card
